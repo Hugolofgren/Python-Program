@@ -10,18 +10,18 @@ def kasta_tarningar():
 
 #Tärningsspelet där sparas kast i listor.
 def tarnings_spel(rounds):
-    userWins = 0
-    computerWins = 0
-    userThrows = []
-    computerThrows = []
+    user_wins = 0
+    computer_wins = 0
+    user_throws = []
+    computer_throws = []
     
     for round in range(1, rounds + 1):
     #Användarens kast
             userthrow = kasta_tarningar()
-            userThrows.append(userthrow)
+            user_throws.append(userthrow)
     #Datorns kast
             computerthrow = kasta_tarningar()
-            computerThrows.append(computerthrow)
+            computer_throws.append(computerthrow)
 
         #Printar resultatet för varje runda med hänsyn till vem som vann omgången.
             if userthrow > computerthrow:
@@ -40,14 +40,14 @@ def tarnings_spel(rounds):
 
 #Slutresultat
     print("\nSpelet är över!")
-    print(f"Totalt: Du vann {userWins} omgångar och datorn vann {computerWins} omgångar.")
+    print(f"Totalt: Du vann {user_wins} omgångar och datorn vann {computer_wins} omgångar.")
 
 #Avgör vem som vann spelet
-    if userWins > computerWins:
+    if user_wins > computer_wins:
         print("Grattis, du vann spelet")
         print("") 
     
-    elif userWins < computerWins:
+    elif user_wins < computer_wins:
         print("Datorn vann spelet")
         print("")
 
@@ -56,12 +56,12 @@ def tarnings_spel(rounds):
         print("") 
     
 #Beräkna statistiken
-    user_avg = sum(userThrows) / len(userThrows)
-    computer_avg = sum(computerThrows) / len(computerThrows)
-    user_min = min(userThrows)
-    user_max = max(userThrows)
-    computer_min = min(computerThrows)
-    computer_max = max(computerThrows)
+    user_avg = sum(user_throws) / len(user_throws)
+    computer_avg = sum(computer_throws) / len(computer_throws)
+    user_min = min(user_throws)
+    user_max = max(user_throws)
+    computer_min = min(computer_throws)
+    computer_max = max(computer_throws)
 
 #Skriver ut statistiken
     print("Statistik")  
