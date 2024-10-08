@@ -1,4 +1,4 @@
-#Hänga gubbe
+#Hänga gubbe 
 
 import random
 
