@@ -8,46 +8,47 @@ import time
 def kasta_tarningar():
     return random.randint(1, 6) + random.randint(1, 6)
 
-#Tärningsspelet där sparas kast i listor.
-def tarnings_spel(rounds):
-    user_wins = 0
-    computer_wins = 0
-    user_throws = []
-    computer_throws = []
-    
-    for round in range(1, rounds + 1):
+#Tärningsspelet där kast sparas i listor.
+def tarnings_spel(rundor):
+    spelare_vinster = 0
+    dator_vinster = 0
+    spelare_kast = []
+    dator_kast = []
+
+#Loop för spelets gång     
+    for omgang in range(1, rundor + 1):
     #Användarens kast
-            userthrow = kasta_tarningar()
-            user_throws.append(userthrow)
+            tarningar_spelare = kasta_tarningar()
+            spelare_kast.append(tarningar_spelare)
     #Datorns kast
-            computerthrow = kasta_tarningar()
-            computer_throws.append(computerthrow)
+            tarningar_dator = kasta_tarningar()
+            dator_kast.append(tarningar_dator)
 
         #Printar resultatet för varje runda med hänsyn till vem som vann omgången.
-            if userthrow > computerthrow:
-                print(f"Omgång {round}: Du vann! (Du: {userthrow}, Datorn: {computerthrow})")
-                user_wins += 1
+            if tarningar_spelare > tarningar_dator:
+                print(f"Omgång {omgang}: Du vann! (Du: {tarningar_spelare}, Datorn: {tarningar_dator})")
+                spelare_vinster += 1
                 time.sleep(1)
-            elif userthrow < computerthrow:
-                print(f"Omgång {round}: Datorn vann! (Du: {userthrow}, Datorn: {computerthrow})")
-                computer_wins += 1
+            elif tarningar_spelare < tarningar_dator:
+                print(f"Omgång {omgang}: Datorn vann! (Du: {tarningar_spelare}, Datorn: {tarningar_dator})")
+                dator_vinster += 1
                 time.sleep(1) 
             else:
-                print(f"Omgång {round}: Oavgjort! (Du: {userthrow}, Datorn: {computerthrow})")
+                print(f"Omgång {omgang}: Oavgjort! (Du: {tarningar_spelare}, Datorn: {tarningar_dator})")
                 time.sleep(1)
                 
 
 
 #Slutresultat
     print("\nSpelet är över!")
-    print(f"Totalt: Du vann {user_wins} omgångar och datorn vann {computer_wins} omgångar.")
+    print(f"Totalt: Du vann {spelare_vinster} omgångar och datorn vann {dator_vinster} omgångar.")
 
 #Avgör vem som vann spelet
-    if user_wins > computer_wins:
+    if spelare_vinster > dator_vinster:
         print("Grattis, du vann spelet")
         print("") 
     
-    elif user_wins < computer_wins:
+    elif spelare_vinster < dator_vinster:
         print("Datorn vann spelet")
         print("")
 
@@ -56,34 +57,34 @@ def tarnings_spel(rounds):
         print("") 
     
 #Beräkna statistiken
-    user_avg = sum(user_throws) / len(user_throws)
-    computer_avg = sum(computer_throws) / len(computer_throws)
-    user_min = min(user_throws)
-    user_max = max(user_throws)
-    computer_min = min(computer_throws)
-    computer_max = max(computer_throws)
+    spelare_avg = sum(spelare_kast) / len(spelare_kast)
+    dator_avg = sum(dator_kast) / len(dator_kast)
+    spelare_min = min(spelare_kast)
+    spelare_max = max(spelare_kast)
+    dator_min = min(dator_kast)
+    dator_max = max(dator_kast)
 
 #Skriver ut statistiken
     print("Statistik")  
-    print(f"Ditt medelvärde: {user_avg:.1f}")
-    print(f"Datorns medelvärde: {computer_avg:.1f}")
-    print(f"Ditt lägsta kast: {user_min}, ditt högsta kast: {user_max}")
-    print(f"Datorns lägsta kast: {computer_min}, datorns högsta kast: {computer_max}")
+    print(f"Ditt medelvärde: {spelare_avg:.1f}")
+    print(f"Datorns medelvärde: {dator_avg:.1f}")
+    print(f"Ditt lägsta kast: {spelare_min}, ditt högsta kast: {spelare_max}")
+    print(f"Datorns lägsta kast: {dator_min}, datorns högsta kast: {dator_max}")
     
 
     # Fråga om de vill spela igen
     spela_igen = input("Vill du spela igen? (ja/nej): ")
     if spela_igen == "ja":
-        rounds = int(input("Hur många rundor vill du spela? "))
-        tarnings_spel(rounds)
+        rundor = int(input("Hur många rundor vill du spela? "))
+        tarnings_spel(rundor)
     else:
         print("Återvänder till huvudmenyn.")
 
 #Funktion för menyval 2 som kallar på tärningsspelet
 def menyval_2():
-    rounds = int(input("Hur många gånger vill du spela? "))
-    if rounds > 0:
-        tarnings_spel(rounds)
+    rundor = int(input("Hur många gånger vill du spela? "))
+    if rundor > 0:
+        tarnings_spel(rundor)
 
     else:
         print("Ange ett positivt heltal. ")
