@@ -3,6 +3,7 @@
 #importerar random och time modulen
 import random 
 import time 
+import os
 
 #Tärningar i tärnings_spel
 def kasta_tarningar():
@@ -70,19 +71,23 @@ def tarnings_spel(rundor):
     print(f"Datorns medelvärde: {dator_avg:.1f}")
     print(f"Ditt lägsta kast: {spelare_min}, ditt högsta kast: {spelare_max}")
     print(f"Datorns lägsta kast: {dator_min}, datorns högsta kast: {dator_max}")
+    print("")
     
 
     # Fråga om de vill spela igen
     spela_igen = input("Vill du spela igen? (ja/nej): ")
     if spela_igen == "ja":
+        os.system('cls')
         rundor = int(input("Hur många rundor vill du spela? "))
         tarnings_spel(rundor)
     else:
         print("Återvänder till huvudmenyn.")
+        os.system('cls')
 
 #Funktion för menyval 2 som kallar på tärningsspelet
 def menyval_2():
     rundor = int(input("Hur många gånger vill du spela? "))
+    print("")
     if rundor > 0:
         tarnings_spel(rundor)
 
@@ -122,24 +127,29 @@ def gissa_tal():
 #Funktion för att fråga användaren om den vill spela igen eller återgå till huvudloopen
     spela_igen = input("Vill du spela igen? (ja/nej): ")
     if spela_igen == "ja":
+        os.system('cls')
         gissa_tal()
     else:
         print("Återvänder till huvudmenyn.")
+        os.system('cls')
 
 #Huvudmenyn eller den sk mainloopen
 def huvudmeny():
     while True:
         #Menyval
         print("Välkommen till huvudmenyn! ")
+        print("")
         print("1. Information om vilka som skapat programmet!")
         print("2. Tärningsspel! ")
         print("3. Gissa tal mellan 1-100! ")
         print("4. Avsluta programmet")
+        print("")
 
         menyval = int(input("Välj i menyn mellan 1-4! "))
 
         if menyval == 1:
             print("Skaparen av programmet är...")
+            print("")
 
         elif menyval == 2:
             menyval_2()
@@ -153,6 +163,7 @@ def huvudmeny():
 
         else:
             print("Ogiltigt val, försök igen! ")
+            
 
 #Gör så att huvudmenyn startar först.    
 huvudmeny()   

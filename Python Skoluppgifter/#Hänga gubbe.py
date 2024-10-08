@@ -1,6 +1,7 @@
 #Hänga gubbe 
 
 import random
+import os 
 
 #Ordlista och betydelser för spelet
 ordlista = ["Vispgrädde", "Ukulele", "Innebandyspelare", "Flaggstång", "Yxa", "Havsfiske", "Prisma", "Landsbygd", "Generositet", "Lyckosam", "Perrong", "Samarbeta", "Välartad"] 
@@ -26,6 +27,7 @@ def slumpaOrd():
 
 #Funktion för hänga gubbe spelet
 def hanga_gubbe():
+    print("Hänga gubbe!")
     ordet, ord_betydelse = slumpaOrd()  
     gissade_bokstaver = ["_"] * len(ordet)
     felaktiga_gissningar = []
@@ -34,7 +36,6 @@ def hanga_gubbe():
 
 #Loop för spelets gång, printar först ut status för omgången. Därefter frågas spelaren om en bokstav. 
     while x:
-        print("Hänga gubbe!")
         print("\nOrdet: ", " ".join(gissade_bokstaver))
         print("Felaktiga gissningar: ", felaktiga_gissningar)
         print(f"{antal_fel}x gissningar kvar")
@@ -73,6 +74,7 @@ def hanga_gubbe():
             print(f"Felaktig gissning {gissning}")
 
         if antal_fel == 0:
+            print("")
             print("Tyvärr, du har förlorat")
             print(f"Det rätta order var: {ordet}")
             x = False  
@@ -80,9 +82,11 @@ def hanga_gubbe():
 #Kollar om man vill spela igen
     spela_igen = input("Vill du spela igen? (ja/nej): ")
     if spela_igen == "ja":
+        os.system('cls')
         hanga_gubbe()
     elif spela_igen == "nej":
         print("Tack för att du har spelat!")
+        
 
 #Startar spelet
 hanga_gubbe()
