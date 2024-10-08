@@ -2,6 +2,7 @@
 
 import random
 
+#Ordlista och betydelser för spelet
 ordlista = ["Vispgrädde", "Ukulele", "Innebandyspelare", "Flaggstång", "Yxa", "Havsfiske", "Prisma", "Landsbygd", "Generositet", "Lyckosam", "Perrong", "Samarbeta", "Välartad"] 
 
 betydelse = ["Uppvispad grädde",
@@ -18,17 +19,20 @@ betydelse = ["Uppvispad grädde",
 "Att arbeta tillsamans mot ett gemensamt mål",
 "Att någon är väluppfostrad, skötsam, eller lovande"]
 
+#Funktion för att slumpa ord ur ordlistan som också hämtar ordets betydelse
 def slumpaOrd():
     slumpIndex = random.randint(0, len(ordlista)-1)
     return ordlista[slumpIndex], betydelse[slumpIndex]
 
-def hangagubbe():
+#Funktion för hänga gubbe spelet
+def hanga_gubbe():
     ordet, ord_betydelse = slumpaOrd()  
     gissade_bokstaver = ["_"] * len(ordet)
     felaktiga_gissningar = []
     antal_fel = 5
     x = True
 
+#Loop för spelets gång, printar först ut status för omgången. Därefter frågas spelaren om en bokstav. 
     while x:
         print("Hänga gubbe!")
         print("\nOrdet: ", " ".join(gissade_bokstaver))
@@ -37,11 +41,20 @@ def hangagubbe():
 
         gissning = input("Gissa en bokstav: ").lower()
 
+#Inmatningsfelkontroll, om en siffra, fler än en bokstav eller en redan gissat bokstav skrivs printas ett felmeddelande. 
+        if not gissning.isalpha():
+            print("Vänligen ange en bokstav!")
+            continue
+        elif len(gissning) != 1:
+            print("Vänligen gissa på en bokstav i taget!")
+            continue
+
         if gissning in gissade_bokstaver or gissning in felaktiga_gissningar:
             print(f"Du har redan gissat på {gissning}. Försök igen")
             continue
 
-        if gissning in ordet.lower(): #Kollar om bokstaven finns och sparar den gissade bokstaven
+#Kollar om bokstaven finns och uppdaterar den på rätt plats. 
+        if gissning in ordet.lower(): 
             for slumpIndex, bokstav in enumerate(ordet.lower()):
                 if bokstav == gissning:
                     gissade_bokstaver[slumpIndex] = gissning
@@ -52,9 +65,8 @@ def hangagubbe():
                 print(f"Betydelse: {ord_betydelse}")
                 x = False
                 break
-
-        #LÄGG IN INMATNINGSFELKONTROLL
-
+            
+#Räknar antalet felaktiga gissningar, om antal fel = 0 avslutas loopen då spelaren förlorat. 
         else:
             antal_fel -= 1
             felaktiga_gissningar.append(gissning)
@@ -65,12 +77,13 @@ def hangagubbe():
             print(f"Det rätta order var: {ordet}")
             x = False  
 
+#Kollar om man vill spela igen
     spela_igen = input("Vill du spela igen? (ja/nej): ")
     if spela_igen == "ja":
-        hangagubbe()
+        hanga_gubbe()
     elif spela_igen == "nej":
         print("Tack för att du har spelat!")
 
-
-hangagubbe()
+#Startar spelet
+hanga_gubbe()
   

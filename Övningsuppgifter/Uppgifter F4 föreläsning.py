@@ -25,19 +25,25 @@
 
     #Svar:
 
-ticketunder20 = 25 
-ticketover20 = 50
+# ticketunder20 = 25 
+# ticketover20 = 50
 
-user_money = int(input('Hur mycket pengar har du?: '))
-user_age = int(input('Hur gammal är du?: '))
+# user_money = int(input('Hur mycket pengar har du?: '))
+# user_age = int(input('Hur gammal är du?: '))
 
-if user_age < 20 and user_money >= 25:
-    print('Du har råd att åka buss och det kostar 25kr')
+# if user_age < 20 and user_money >= 25:
+#     print('Du har råd att åka buss och det kostar 25kr')
 
-elif user_age > 20 and user_money >= 50:
-    print('Du har råd att åka buss och det kostar 50kr')
+# elif user_age > 20 and user_money >= 50:
+#     print('Du har råd att åka buss och det kostar 50kr')
 
-else:
-    print('Du har inte råd att åka buss')
+# else:
+#     print('Du har inte råd att åka buss')
+
+namnlista = ["Anna", "Erik", "Sara"]
+
+for namn in namnlista:
+    print(namn)
+
 
 
